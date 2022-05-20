@@ -52,9 +52,9 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/metropolis_regular"
         android:gravity="center"
-        android:text="Los productos comprados serán enviados a su domicilio."
+        android:text="Los productos comprados serán enviados a su domicilio.\n\n¡IMPORTANTE!\n\nPor favor muestre este codigo QR al personal que le entregara su pedido."
         android:visibility="invisible"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -82,28 +82,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_mas"
+        android:src="@drawable/ic_inicio"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/codigoQR"
-        android:layout_width="373dp"
-        android:layout_height="472dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="319dp"
+        android:layout_height="348dp"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="338dp"
+        android:layout_height="49dp"
         android:fontFamily="@font/metropolis_regular"
         android:gravity="center"
-        android:text="Por favor muestre este codigo QR al personal que le entregara su pedido."
+        android:text="Por favor tome captura de pantalla del codigo QR, para guardarlo en su dispositivo."
         android:visibility="invisible"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codigoQR" />

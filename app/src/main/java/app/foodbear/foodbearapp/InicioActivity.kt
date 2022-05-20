@@ -41,6 +41,9 @@ class InicioActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIte
             }
             R.id.carritoMenu -> {
                 val fragment = CarritoFragment()
+                val bundle = Bundle()
+                bundle .putString("email", email)
+                fragment.arguments = bundle
                 supportFragmentManager.beginTransaction().replace(R.id.nav_fragment, fragment, fragment.javaClass.simpleName)
                     .commit()
                 return true
@@ -54,7 +57,7 @@ class InicioActivity : AppCompatActivity(), BottomNavigationView.OnNavigationIte
             R.id.perfilMenu -> {
                 val fragment = PerfilFragment()
                 val bundle = Bundle()
-                bundle .putString("message", email)
+                bundle .putString("email", email)
                 fragment.arguments = bundle
                 supportFragmentManager.beginTransaction().replace(R.id.nav_fragment, fragment, fragment.javaClass.simpleName)
                     .commit()

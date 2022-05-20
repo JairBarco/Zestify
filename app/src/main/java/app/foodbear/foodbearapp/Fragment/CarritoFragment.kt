@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import app.foodbear.foodbearapp.Adapter.CarritoAdapter
 import app.foodbear.foodbearapp.Adapter.CartItemClickAdapter
+import app.foodbear.foodbearapp.AjustesActivity
 
 import app.foodbear.foodbearapp.R
 import app.foodbear.foodbearapp.avisoApp
@@ -58,9 +59,13 @@ class CarritoFragment : Fragment(), CartItemClickAdapter {
         val animacionCarVacio:LinearLayout = view.findViewById(R.id.animacionCarVacio)
         val tituloCarrito:TextView = view.findViewById(R.id.tituloCarrito)
         val pagar:Button = view.findViewById(R.id.btnPagar)
+        val intent = Intent(context, avisoApp::class.java)
 
         pagar.setOnClickListener {
-            startActivity(Intent(context, avisoApp::class.java))
+            val bundle = arguments
+            val email = bundle!!.getString("email")
+            intent.putExtra("email", email)
+            startActivity(intent)
         }
         Item = arrayListOf()
 
@@ -107,6 +112,8 @@ class CarritoFragment : Fragment(), CartItemClickAdapter {
                 //monto total
             }
             montoTotal.text = "$" + sum
+            val total = "$" + sum.toString()
+            intent.putExtra("total", total)
         })
 
         return view

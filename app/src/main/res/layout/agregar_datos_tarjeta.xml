@@ -126,7 +126,7 @@
             android:maxLines="1" />
 
         <Button
-            android:id="@+id/addCardBtn_cardAddBottomSheet"
+            android:id="@+id/pagarBoton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_bg"

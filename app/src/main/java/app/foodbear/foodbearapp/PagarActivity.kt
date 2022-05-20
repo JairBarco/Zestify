@@ -65,9 +65,11 @@ class PagarActivity : AppCompatActivity(){
         )
 
       irInicio.setOnClickListener {
-
-          startActivity(Intent(this, InicioActivity::class.java))
-
+          val email = intent.getStringExtra("email").toString()
+          var intent = Intent(this, InicioActivity::class.java)
+          intent.putExtra("email", email)
+          startActivity(intent)
+          finish()
         }
         ventanaEmergente()
 
@@ -79,10 +81,15 @@ class PagarActivity : AppCompatActivity(){
         bottomSheetView.findViewById<EditText>(R.id.campoNumeroTarjeta).text.clear()
         bottomSheetView.findViewById<EditText>(R.id.campoVencimiento).text.clear()
         bottomSheetView.findViewById<EditText>(R.id.campoCVV).text.clear()
+        bottomSheetView.findViewById<EditText>(R.id.direccion).text.clear()
+        bottomSheetView.findViewById<EditText>(R.id.codigoPostal).text.clear()
 
-        bottomSheetView.findViewById<Button>(R.id.addCardBtn_cardAddBottomSheet).setOnClickListener {
-
-            finPago()
+        bottomSheetView.findViewById<Button>(R.id.pagarBoton).setOnClickListener {
+            if((bottomSheetView.findViewById<EditText>(R.id.campoNombre).text.isEmpty()) and (bottomSheetView.findViewById<EditText>(R.id.campoNumeroTarjeta).text.isEmpty()) and (bottomSheetView.findViewById<EditText>(R.id.direccion).text.isEmpty()) and (bottomSheetView.findViewById<EditText>(R.id.codigoPostal).text.isEmpty())) {
+                toast("Ingrese todos los datos requeridos")
+            }else{
+                finPago()
+            }
         }
 
         bottomSheetDialod.setContentView(bottomSheetView)
@@ -91,20 +98,13 @@ class PagarActivity : AppCompatActivity(){
 
     private fun finPago() {
 
-        val nombreCompleto:String =
-            bottomSheetView.findViewById<EditText>(R.id.campoNombre).text.toString()
-
-        //val numTarjeta: String = bottomSheetView.findViewById<EditText>(R.id.campoNumeroTarjeta).text.toString()
-        //val vencimiento : String = bottomSheetView.findViewById<EditText>(R.id.campoVencimiento).text.toString()
-        //val cvv : String = bottomSheetView.findViewById<EditText>(R.id.campoCVV).text.toString()
-
-        //var cardBrand: String = "MasterCard"
-        var contenidoQR = "$nombreCompleto ha realizado esta compra en Foobear!\n\nEste es su recibo de comprobación"
+        val nombreCompleto:String = bottomSheetView.findViewById<EditText>(R.id.campoNombre).text.toString()
+        val direccion:String = bottomSheetView.findViewById<EditText>(R.id.direccion).text.toString()
+        val codigop:String = bottomSheetView.findViewById<EditText>(R.id.codigoPostal).text.toString()
+        val total = intent.getStringExtra("total").toString()
+        var contenidoQR = "$nombreCompleto ha realizado esta compra.\n\nDirección de pago: $direccion\nCodigo postal: $codigop\nPago realizado total......$total"
         if(!isValid(bottomSheetView.findViewById<EditText>(R.id.campoNumeroTarjeta).text.toString().toLong())) {
 
-            /*cardBrand = CardType.detect(numTarjeta)
-                .toString()
-            cardViewModel.insert(CardEntity(nombreCompleto, numTarjeta, vencimiento, cvv, cardBrand))*/
             toast("Pago realizado")
 
             bottomSheetDialod.dismiss()

@@ -210,10 +210,10 @@ class ProductoDescipcionActivity : AppCompatActivity() {
         var fileJson: String = ""
 
         if (alimentoFrom.equals("Cover")) {
-            fileJson = "NuevosAlimentos.json"
+            fileJson = "OfertaAlimentos.json"
         }
         if (alimentoFrom.equals("New")) {
-            fileJson = "OfertaAlimentos.json"
+            fileJson = "NuevosAlimentos.json"
         }
 
 

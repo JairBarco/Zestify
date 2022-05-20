@@ -12,9 +12,13 @@ class avisoApp: AppCompatActivity() {
         val avisoBtn: Button = findViewById(R.id.avisoBtn)
 
         avisoBtn.setOnClickListener {
-
-            startActivity(Intent(this, PagarActivity::class.java))
-
+            val email = intent.getStringExtra("email").toString()
+            val total = intent.getStringExtra("total").toString()
+            var intent = Intent(this, PagarActivity::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("total", total)
+            startActivity(intent)
+            finish()
         }
     }
 }

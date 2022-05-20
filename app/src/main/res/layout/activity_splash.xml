@@ -17,18 +17,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="341dp"
-        android:layout_height="202dp"
-        android:background="@color/white"
-        android:text="Esta aplicación es un proyecto escolar que simula la compra de alimentos prontos a caducar para reducir el desperdicio de alimentos, por lo tanto la compra de alimentos no es real ni sera procesada."
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
