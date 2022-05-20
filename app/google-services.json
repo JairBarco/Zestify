@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "259416886074",
+    "firebase_url": "https://foodbear-1e2e0-default-rtdb.firebaseio.com",
+    "project_id": "foodbear-1e2e0",
+    "storage_bucket": "foodbear-1e2e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259416886074:android:4dc7e73558efd8d07dde03",
+        "android_client_info": {
+          "package_name": "app.foodbear.foodbearappp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259416886074-shbeeped7v282od21evpbk483jhj3dd3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANS0SowJUWbwCB5TEpnC_4SXiz1Pxf0LI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259416886074-shbeeped7v282od21evpbk483jhj3dd3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259416886074:android:6375c179fc4671807dde03",
+        "android_client_info": {
+          "package_name": "app.foodbear.foodbearapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259416886074-shbeeped7v282od21evpbk483jhj3dd3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANS0SowJUWbwCB5TEpnC_4SXiz1Pxf0LI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259416886074-shbeeped7v282od21evpbk483jhj3dd3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

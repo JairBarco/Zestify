@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/backgroundAd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgAlimento"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/logoapp"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/nombreAlimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Producto"
+                    android:textSize="18sp"
+                    android:maxLines="1"
+                    android:textColor="@color/mainText"
+                    android:fontFamily="@font/metropolis_semibold"
+                    android:maxEms="12"/>
+
+                <TextView
+                    android:id="@+id/precioAlimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Precio"
+                    android:textSize="14sp"
+                    android:textColor="@color/texto"
+                    android:fontFamily="@font/metropolis_semibold"
+                    />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/cantidadTexto"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:text="Cantidad:"
+                        android:gravity="center"
+                        android:textColor="@color/mainText"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+                    <TextView
+                        android:id="@+id/cantidadAlimento"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:text="14"
+                        android:gravity="center"
+                        android:textColor="@color/mainText"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/metropolis_regular"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="40dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/agregar"
+                    android:src="@drawable/ic_quitar"
+                    app:tint="@color/mainText"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

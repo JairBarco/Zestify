@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FoodBear</string>
+    <string name="pantalla_vacia">En desarrollo</string>
+    <string name="nuevo">Nuevo</string>
+    <string name="numero_tarjeta">4169586336983947</string>
+    <string name="nombre_completo">Nombre completo</string>
+    <string name="fecha_vencimiento">Fecha de vencimiento</string>
+    <string name="realizar_pago">Realizar pago</string>
+    <string name="favoritos_vacio">Lista de favoritos vacía</string>
+    <string name="agregar_carrito">Agregar al carrito</string>
+    <string name="numero_tarjeta_oculto">**** **** **** </string>
+</resources>
