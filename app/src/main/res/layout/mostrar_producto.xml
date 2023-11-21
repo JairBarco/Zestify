@@ -30,27 +30,6 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:elevation="5dp"
-        android:layout_marginBottom="88dp"
-        android:layout_marginRight="5dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/circle_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout5">
-
-        <ImageView
-            android:id="@+id/icCorazon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:src="@drawable/ic_fav"
-            app:tint="@color/mainText" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="180dp"
         android:layout_height="110dp"
@@ -62,13 +41,13 @@
 
         <RatingBar
             android:id="@+id/estrellasValoraciones"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:numStars="5"
             android:rating="5"
             android:scaleX=".4"
             android:scaleY=".4"
-            style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:transformPivotX="0dp"
             android:transformPivotY="15dp" />
 

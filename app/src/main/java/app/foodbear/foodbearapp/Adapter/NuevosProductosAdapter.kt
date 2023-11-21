@@ -66,7 +66,6 @@ class NuevosProductosAdapter(private val alimentoList: ArrayList<Alimento>, cont
     public class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
 
         val imagenAlimento:ImageView = itemView.findViewById(R.id.fotoAlimento)
-        val corazon:ImageView = itemView.findViewById(R.id.icCorazon)
         val valoraciones:RatingBar = itemView.findViewById(R.id.estrellasValoraciones)
         val tienda:TextView = itemView.findViewById(R.id.nombreTienda)
         val desc:TextView = itemView.findViewById(R.id.decuentoEnAlimento)

@@ -12,7 +12,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import app.foodbear.foodbearapp.Utils.Extensions.toast
 
-class Usuario(var nombreCompleto: String, var email: String, var contrasena: String)
+class Usuario(var nombreCompleto: String, var email: String, var contrasena: String,var pedidos: List<String> = listOf())
 
 class SignUpActivity : AppCompatActivity() {
 

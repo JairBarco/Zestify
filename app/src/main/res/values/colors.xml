@@ -9,4 +9,5 @@
     <color name="mainText">#222222</color>
     <color name="texto">#9B9B9B</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rojo">#FF0000</color>
 </resources>
