@@ -15,7 +15,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         Handler().postDelayed({
 
-            val intent = Intent(this, ChatBot::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
 

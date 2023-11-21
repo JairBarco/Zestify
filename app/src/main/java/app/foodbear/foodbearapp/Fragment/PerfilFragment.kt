@@ -16,6 +16,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import app.foodbear.foodbearapp.R
+import app.foodbear.foodbearapp.SignUpActivity
 import app.foodbear.foodbearapp.db.Card.CardViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -105,29 +106,21 @@ class PerfilFragment : Fragment() {
 
     private fun getUserData() = CoroutineScope(Dispatchers.IO).launch {
         try {
-
-            val bundle = arguments
-            val email = bundle!!.getString("email")
-            val queque = Volley.newRequestQueue(context)
-            val url = "http://foodbearapp.atwebpages.com/login.php?email=$email"
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET, url, null, Response.Listener{ response ->
-                    nombreUsuario.setText(response.getString("nombre"))
-                }, Response.ErrorListener { error ->
-                    Toast.makeText(context, "Carga de datos fallida", Toast.LENGTH_LONG).show()
-                })
-            queque.add(jsonObjectRequest)
-
+            val usuarioActual = SignUpActivity.usuarioActual
 
             withContext(Dispatchers.Main){
-
-                perfilUsuario.text = email
-                showLayout()
+                if (usuarioActual != null) {
+                    perfilUsuario.text = usuarioActual.email
+                    nombreUsuario.text = usuarioActual.nombreCompleto
+                    showLayout()
+                } else {
+                    Toast.makeText(context, "Usuario no encontrado", Toast.LENGTH_LONG).show()
+                }
             }
-
-
-        }catch (e:Exception){
-
+        } catch (e: Exception) {
+            withContext(Dispatchers.Main){
+                Toast.makeText(context, "Carga de datos fallida", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

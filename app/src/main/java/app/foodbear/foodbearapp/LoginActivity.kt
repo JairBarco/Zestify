@@ -6,11 +6,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import app.foodbear.foodbearapp.Utils.Extensions.toast
 
 class LoginActivity : AppCompatActivity() {
@@ -23,13 +18,10 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var loadingDialog: loadingDialog
 
-    lateinit var emailError:TextView
-    lateinit var contrasenaError:TextView
+    lateinit var emailError: TextView
+    lateinit var contrasenaError: TextView
     lateinit var contrasenaEts: String
     lateinit var emailEts: String
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +35,6 @@ class LoginActivity : AppCompatActivity() {
         contrasenaError = findViewById(R.id.contrasenaError)
         emailEts = emailTxt.text.toString().trim()
 
-
-
-        //textAutoCheck()
-
         loadingDialog = loadingDialog(this)
 
         signUpBtn.setOnClickListener {
@@ -55,36 +43,46 @@ class LoginActivity : AppCompatActivity() {
         }
 
         signInBtn.setOnClickListener {
-
             emailEts = emailTxt.text.toString().trim()
             contrasenaEts = contrasenaTxt.text.toString().trim()
 
-            val queque = Volley.newRequestQueue(this)
-            val url = "http://foodbearapp.atwebpages.com/login.php?email=$emailEts"
-            val jsonObjectRequest = JsonObjectRequest(
-                Request.Method.GET, url, null, Response.Listener{ response ->
-                    val contra = response.getString("contrasena")
-                    if (contrasenaEts == contra){
-                        var intent = Intent(this, InicioActivity::class.java)
-                        intent.putExtra("email", emailEts)
-                        startActivity(intent)
-                        finish()
-                        toast("Inicio de sesión completado")
+            // Validación del usuario master
+            if (emailEts == "jair@main.com" && contrasenaEts == "Test1234") {
+                // Crear un usuario master
+                val usuarioMaster = Usuario("Jair Main", emailEts, contrasenaEts)
 
-                    }else{
-                        toast("Contraseña incorrecta")
-                    }
-                }, Response.ErrorListener { error ->
-                    Toast.makeText(this, "Email incorrecto", Toast.LENGTH_LONG).show()
-                })
-            queque.add(jsonObjectRequest)
+                // Establecer el usuario master como usuario actual en SignUpActivity
+                SignUpActivity.usuarioActual = usuarioMaster
 
+                // Agregar el usuario master a la lista de usuarios en SignUpActivity
+                SignUpActivity.listaUsuarios.add(usuarioMaster)
+
+                // Inicio de sesión como usuario master
+                var intent = Intent(this, InicioActivity::class.java)
+                intent.putExtra("email", emailEts)
+                startActivity(intent)
+                finish()
+                toast("Inicio de sesión completado")
+            } else {
+                // Verifica si el email y la contraseña coinciden en la lista de usuarios
+                val usuarioEncontrado =
+                    SignUpActivity.listaUsuarios.find { it.email == emailEts && it.contrasena == contrasenaEts }
+
+                if (usuarioEncontrado != null) {
+                    // Establece el usuario actual en SignUpActivity
+                    SignUpActivity.usuarioActual = usuarioEncontrado
+
+                    // Inicio de sesión permitido
+                    var intent = Intent(this, InicioActivity::class.java)
+                    intent.putExtra("email", emailEts)
+                    startActivity(intent)
+                    finish()
+                    toast("Inicio de sesión completado")
+                } else {
+                    // Email o contraseña incorrectos
+                    toast("Email o contraseña incorrectos")
+                }
+            }
         }
-
     }
 }
-
-
-
-
-

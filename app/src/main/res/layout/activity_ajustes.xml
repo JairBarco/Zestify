@@ -116,6 +116,24 @@
             android:inputType="textEmailAddress"
             android:maxLines="1" />
 
+        <EditText
+            android:id="@+id/Contrasena"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="15sp"
+            android:paddingLeft="20dp"
+            android:drawableRight="@null"
+            android:paddingRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/mainText"
+            android:background="@drawable/edit_text_bg"
+            android:fontFamily="@font/metropolis_regular"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
         <Button
             android:visibility="gone"
             android:id="@+id/guardarBtn"

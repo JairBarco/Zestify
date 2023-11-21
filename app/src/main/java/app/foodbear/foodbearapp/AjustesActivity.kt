@@ -1,26 +1,21 @@
 package app.foodbear.foodbearapp
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.*
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import app.foodbear.foodbearapp.Utils.Extensions.toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AjustesActivity : AppCompatActivity() {
 
     lateinit var nombre: EditText
     lateinit var correo: EditText
+    lateinit var contrasena: EditText
     lateinit var botonGuardar: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +24,9 @@ class AjustesActivity : AppCompatActivity() {
 
         nombre = findViewById(R.id.nombreCampo2)
         correo = findViewById(R.id.correoCampo)
+        contrasena = findViewById(R.id.Contrasena)  // Nuevo campo de contraseña
         botonGuardar = findViewById(R.id.guardarBtn)
         val volverAtras: ImageView = findViewById(R.id.icRegresar)
-
 
         volverAtras.setOnClickListener {
             onBackPressed()
@@ -42,83 +37,54 @@ class AjustesActivity : AppCompatActivity() {
         }
 
         verificarDatos()
+
+        // Mostrar datos actuales
+        mostrarDatosActuales()
     }
 
     private fun checarDatosIngresados() {
-
-        if (nombre.text.isEmpty()) {
-            toast("Campo de nombre vacio")
-            return
-        }
-        if (correo.text.isEmpty()) {
-            toast("Campo de Email vacio")
+        if (nombre.text.isEmpty() || correo.text.isEmpty() || contrasena.text.isEmpty()) {
+            toast("Completa todos los campos")
             return
         }
 
-        val emailU = intent.getStringExtra("emailU").toString()
-        var nombre = nombre.text.toString()
-        var email = correo.text.toString()
+        // Obtener el usuario actual desde SignUpActivity
+        val usuarioActual = SignUpActivity.usuarioActual
 
-        actualizarDatosEnBD(nombre, email, emailU)
+        if (usuarioActual != null) {
+            // Actualizar datos directamente en el objeto Usuario
+            usuarioActual.nombreCompleto = nombre.text.toString()
+            usuarioActual.email = correo.text.toString()
+            usuarioActual.contrasena = contrasena.text.toString()  // Actualizar contraseña
+
+            toast("Datos actualizados")
+            botonGuardar.visibility = View.GONE
+        } else {
+            toast("Usuario no encontrado")
+        }
     }
 
-    private fun actualizarDatosEnBD(nombre: String, email: String, emailU: String) =
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val queque = Volley.newRequestQueue(this@AjustesActivity)
-                val url = "http://foodbearapp.atwebpages.com/editar.php?emailU=$emailU&nombre=$nombre&email=$email"
-                val jsonObjectRequest = JsonObjectRequest(
-                    Request.Method.GET, url, null, Response.Listener { response ->
-                        toast("Datos actualizados")
-                    }, Response.ErrorListener { error ->
-                        Toast.makeText(
-                            this@AjustesActivity,
-                            "Se reinicio la aplicación para aplicar la actualización",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        var intent = Intent(this@AjustesActivity, LoginActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    })
+    private fun mostrarDatosActuales() {
+        // Obtener el usuario actual desde SignUpActivity
+        val usuarioActual = SignUpActivity.usuarioActual
 
-                queque.add(jsonObjectRequest)
-
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(this@AjustesActivity, "Guardado", Toast.LENGTH_SHORT).show()
-                    botonGuardar.visibility = View.GONE
-                }
-
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        this@AjustesActivity,
-                        "" + e.message.toString(),
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                }
-
-            }
+        if (usuarioActual != null) {
+            // Mostrar datos actuales en los campos correspondientes
+            nombre.setText(usuarioActual.nombreCompleto)
+            correo.setText(usuarioActual.email)
+            contrasena.setText(usuarioActual.contrasena)  // Mostrar contraseña
         }
+    }
+
     private fun verificarDatos() {
-
         nombre.addTextChangedListener(object : TextWatcher {
-
             override fun afterTextChanged(s: Editable) {
                 botonGuardar.visibility = View.VISIBLE
             }
 
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
-            ) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            }
-
-            override fun onTextChanged(
-                s: CharSequence, start: Int,
-                before: Int, count: Int
-            ) {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (count > 1) {
                     botonGuardar.visibility = View.VISIBLE
                 }
@@ -126,22 +92,13 @@ class AjustesActivity : AppCompatActivity() {
         })
 
         correo.addTextChangedListener(object : TextWatcher {
-
             override fun afterTextChanged(s: Editable) {
                 botonGuardar.visibility = View.VISIBLE
             }
 
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
-            ) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            }
-
-            override fun onTextChanged(
-                s: CharSequence, start: Int,
-                        before: Int, count: Int
-            ) {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (count > 1) {
                     botonGuardar.visibility = View.VISIBLE
                 }
