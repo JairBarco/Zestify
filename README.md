@@ -1,5 +1,4 @@
-# FoodBear
-Proyecto de Dispositivos Móviles
+# Zestify
 
 El proyecto que he ideado es una plataforma de venta de alimentos en línea que permita a los usuarios disfrutar de una amplia variedad de productos 
 alimenticios de diferentes restaurantes y tiendas comerciales. La idea es crear una plataforma en la que se pueda acceder a un menú completo de diferentes
